@@ -18,41 +18,41 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import Foundation
+import Swift
 
 public protocol BooleanControlFlow {
-    @discardableResult func then(_ f: () -> Void) -> BooleanAlternateControlFlow
-    @discardableResult func then(_ f: @autoclosure () -> Void) -> BooleanAlternateControlFlow
+    @discardableResult func then(_ f: () throws -> Void) rethrows -> BooleanAlternateControlFlow
+    @discardableResult func then(_ f: @autoclosure () throws -> Void) rethrows -> BooleanAlternateControlFlow
 }
 
 public protocol BooleanAlternateControlFlow {
-    func `else`(_ f: () -> Void)
-    func `else`(_ f: @autoclosure () -> Void)
+    func `else`(_ f: () throws -> Void) rethrows
+    func `else`(_ f: @autoclosure () throws -> Void) rethrows
     
 }
 
 extension Bool: BooleanControlFlow {
-    @discardableResult public func then(_ f: () -> Void) -> BooleanAlternateControlFlow {
+    @discardableResult public func then(_ f: () throws -> Void) rethrows -> BooleanAlternateControlFlow {
         guard self else { return self }
-        f()
+        try f()
         return self
     }
     
-    @discardableResult public func then(_ f: @autoclosure () -> Void) -> BooleanAlternateControlFlow {
+    @discardableResult public func then(_ f: @autoclosure () throws -> Void) rethrows -> BooleanAlternateControlFlow {
         guard self else { return self }
-        f()
+        try f()
         return self
     }
 }
 
 extension Bool: BooleanAlternateControlFlow {
-    public func `else`(_ f: () -> Void) {
+    public func `else`(_ f: () throws -> Void) rethrows {
         guard !self else { return }
-        f()
+        try f()
     }
     
-    public func `else`(_ f: @autoclosure () -> Void) {
+    public func `else`(_ f: @autoclosure () throws -> Void) rethrows {
         guard !self else { return }
-        f()
+        try f()
     }
 }
