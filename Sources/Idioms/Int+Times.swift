@@ -18,21 +18,21 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import Foundation
+import Swift
 
 // Source: http://stackoverflow.com/questions/30554013/what-is-the-shortest-way-to-run-same-code-n-times-in-swift
 extension Int {
-    public func times(_ f: () -> Void) {
+    public func times(_ f: () throws -> Void) rethrows {
         guard self > 0 else { return }
         for _ in 0..<self {
-            f()
+            try f()
         }
     }
     
-    public func times(_ f: @autoclosure () -> Void) {
+    public func times(_ f: @autoclosure () throws -> Void) rethrows {
         guard self > 0 else { return }
         for _ in 0..<self {
-            f()
+            try f()
         }
     }
 }
