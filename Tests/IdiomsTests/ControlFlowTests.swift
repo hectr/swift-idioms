@@ -81,7 +81,7 @@ class ControlFlowTests: XCTestCase {
         boolean.else(executed = true)
         XCTAssertTrue(executed)
     }
-    
+
     func testElseIsNotExecutedOnTrueBooleanWithAutoclosure() {
         let boolean = true
         boolean.else(XCTFail())
@@ -102,6 +102,16 @@ class ControlFlowTests: XCTestCase {
             .then {}
             .else(XCTFail())
     }
+
+    func testThenRethrowsError() {
+        let boolean = true
+        XCTAssertThrowsError(try boolean.then { throw NSError() })
+    }
+
+    func testElseRethrowsError() {
+        let boolean = false
+        XCTAssertThrowsError(try boolean.else { throw NSError() })
+    }
     
     static var allTests = [
         ("testThenIsNotExecutedOnFalseBoolean", testThenIsNotExecutedOnFalseBoolean),
@@ -115,6 +125,8 @@ class ControlFlowTests: XCTestCase {
         ("testElseIsExecutedOnFalseBooleanWithAutoclosure", testElseIsExecutedOnFalseBooleanWithAutoclosure),
         ("testElseIsNotExecutedOnTrueBooleanWithAutoclosure", testElseIsNotExecutedOnTrueBooleanWithAutoclosure),
         ("testElseIsExecutedOnFalseBooleanAfterThenWithAutoclosure", testElseIsExecutedOnFalseBooleanAfterThenWithAutoclosure),
-        ("testElseIsNotExecutedOnTrueBooleanAfterThenWithAutoclosure", testElseIsNotExecutedOnTrueBooleanAfterThenWithAutoclosure)
+        ("testElseIsNotExecutedOnTrueBooleanAfterThenWithAutoclosure", testElseIsNotExecutedOnTrueBooleanAfterThenWithAutoclosure),
+        ("testThenRethrowsError", testThenRethrowsError),
+        ("testElseRethrowsError", testElseRethrowsError),
     ]
 }

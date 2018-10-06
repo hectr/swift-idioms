@@ -92,7 +92,11 @@ class TimesTests: XCTestCase {
         value.times(count += 1)
         XCTAssertEqual(count, value)
     }
-    
+
+    func testTimesRethrowsError() {
+        XCTAssertThrowsError(try 1.times { throw NSError() })
+    }
+
     static var allTests = [
         ("testNegativeTimes", testNegativeTimes),
         ("testZeroTimes", testZeroTimes),
@@ -103,6 +107,7 @@ class TimesTests: XCTestCase {
         ("testZeroTimesWithAutoclosure", testZeroTimesWithAutoclosure),
         ("testOneTimesWithAutoclosure", testOneTimesWithAutoclosure),
         ("testTwoTimesWithAutoclosure", testTwoTimesWithAutoclosure),
-        ("testThirtyTimesWithAutoclosure", testThirtyTimesWithAutoclosure)
+        ("testThirtyTimesWithAutoclosure", testThirtyTimesWithAutoclosure),
+        ("testTimesRethrowsError", testTimesRethrowsError),
     ]
 }
