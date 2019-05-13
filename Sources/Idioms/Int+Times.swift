@@ -22,7 +22,7 @@ import Swift
 
 // Source: http://stackoverflow.com/questions/30554013/what-is-the-shortest-way-to-run-same-code-n-times-in-swift
 extension Int {
-    public func times(_ f: () throws -> Void) rethrows {
+    public func times(do f: () throws -> Void) rethrows {
         guard self > 0 else { return }
         for _ in 0..<self {
             try f()

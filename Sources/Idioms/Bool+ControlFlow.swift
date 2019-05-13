@@ -21,18 +21,18 @@
 import Swift
 
 public protocol BooleanControlFlow {
-    @discardableResult func then(_ f: () throws -> Void) rethrows -> BooleanAlternateControlFlow
+    @discardableResult func then(do f: () throws -> Void) rethrows -> BooleanAlternateControlFlow
     @discardableResult func then(_ f: @autoclosure () throws -> Void) rethrows -> BooleanAlternateControlFlow
 }
 
 public protocol BooleanAlternateControlFlow {
-    func `else`(_ f: () throws -> Void) rethrows
+    func `else`(do f: () throws -> Void) rethrows
     func `else`(_ f: @autoclosure () throws -> Void) rethrows
     
 }
 
 extension Bool: BooleanControlFlow {
-    @discardableResult public func then(_ f: () throws -> Void) rethrows -> BooleanAlternateControlFlow {
+    @discardableResult public func then(do f: () throws -> Void) rethrows -> BooleanAlternateControlFlow {
         guard self else { return self }
         try f()
         return self
@@ -46,7 +46,7 @@ extension Bool: BooleanControlFlow {
 }
 
 extension Bool: BooleanAlternateControlFlow {
-    public func `else`(_ f: () throws -> Void) rethrows {
+    public func `else`(do f: () throws -> Void) rethrows {
         guard !self else { return }
         try f()
     }

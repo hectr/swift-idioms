@@ -60,7 +60,7 @@ public func ==<T: Equatable>(lhs: (current: T, previous: T?, next: T?), rhs: (cu
     return lhs.0 == rhs.0 && lhs.1 == rhs.1 && lhs.2 == rhs.2
 }
 
-extension DictionaryLiteral: IterableRandomAccessCollection {}
+extension KeyValuePairs: IterableRandomAccessCollection {}
 extension DispatchData: IterableRandomAccessCollection {}
 extension Repeated: IterableRandomAccessCollection {}
 extension Unicode.Scalar.UTF16View: IterableRandomAccessCollection {}
