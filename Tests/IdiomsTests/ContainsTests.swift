@@ -1,0 +1,76 @@
+// Copyright (c) 2019 Hèctor Marquès Ranea
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+
+import Foundation
+import XCTest
+import Idioms
+
+class ContainsTests: XCTestCase {
+    func testCanMatchWord() {
+        let string = "hello word!!"
+        XCTAssertTrue(string.contains(word: "hello"))
+        XCTAssertTrue(string.contains(word: "word"))
+    }
+
+    func testReturnsFalseIfNotMatched() {
+        let string = "hello word!!"
+        XCTAssertFalse(string.contains(word: "!"))
+        XCTAssertFalse(string.contains(word: "llo"))
+        XCTAssertFalse(string.contains(word: "d"))
+        XCTAssertFalse(string.contains(word: "o "))
+        XCTAssertFalse(string.contains(word: " w"))
+    }
+
+    func testCanMatchWhitespace() {
+        let string = "hello word!!"
+        XCTAssertTrue(string.contains(word: " "))
+    }
+
+    func testCannotMatchEmptyString1() {
+        let string = "hello word!!"
+        XCTAssertFalse(string.contains(word: ""))
+    }
+
+    func testCannotMatchEmptyString2() {
+        let empty = ""
+        XCTAssertFalse(empty.contains(word: ""))
+    }
+
+
+    func testWordCanOccupyWholeString() {
+        let hello = "hello"
+        XCTAssertTrue(hello.contains(word: hello))
+    }
+
+    func testEmptyStringCannotContainWord() {
+        let empty = ""
+        XCTAssertFalse(empty.contains(word: "hello"))
+    }
+
+    static var allTests = [
+        ("testCanMatchWord", testCanMatchWord),
+        ("testReturnsFalseIfNotMatched", testReturnsFalseIfNotMatched),
+        ("testCanMatchWhitespace", testCanMatchWhitespace),
+        ("testCannotMatchEmptyString1", testCannotMatchEmptyString1),
+        ("testCannotMatchEmptyString2", testCannotMatchEmptyString2),
+        ("testWordCanOccupyWholeString", testWordCanOccupyWholeString),
+        ("testEmptyStringCannotContainWord", testEmptyStringCannotContainWord),
+    ]
+}
