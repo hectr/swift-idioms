@@ -11,4 +11,5 @@ XCTMain([
     testCase(ForLoopTests.allTests),
     testCase(StringProtocolSubscriptTests.allTests),
     testCase(VectorTests.allTests),
+    testCase(Matrix2DTests.allTests),
     ])
