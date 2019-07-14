@@ -10,4 +10,5 @@ XCTMain([
     testCase(PrependingTests.allTests),
     testCase(ForLoopTests.allTests),
     testCase(StringProtocolSubscriptTests.allTests),
+    testCase(VectorTests.allTests),
     ])
