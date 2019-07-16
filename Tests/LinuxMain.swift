@@ -12,4 +12,5 @@ XCTMain([
     testCase(StringProtocolSubscriptTests.allTests),
     testCase(VectorTests.allTests),
     testCase(Matrix2DTests.allTests),
+    testCase(RegularExpressionMatchOperatorTests.allTests),
     ])
