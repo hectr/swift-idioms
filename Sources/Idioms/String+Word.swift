@@ -21,9 +21,19 @@
 import Foundation
 
 extension String {
-    // Source: https://stackoverflow.com/a/45437396
     public func contains(word: String) -> Bool {
-        guard !word.isEmpty else { return false }
-        return self.range(of: "\\b\(word)\\b", options: .regularExpression) != nil
+        return rangeOf(word: word) != nil
+    }
+    
+    public func rangeOf(word: String) -> Range<String.Index>? {
+        guard !word.isEmpty else { return nil }
+        return self.range(of: "\\b\(word)\\b", options: .regularExpression)
+    }
+    
+    public func replacingWord(word: String, with newWord: String) -> String {
+        guard let bounds = rangeOf(word: word) else { return self }
+        var result = self
+        result.replaceSubrange(bounds, with: Array(newWord))
+        return result
     }
 }

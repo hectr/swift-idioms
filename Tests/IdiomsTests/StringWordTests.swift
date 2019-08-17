@@ -22,7 +22,7 @@ import Foundation
 import XCTest
 import Idioms
 
-class ContainsTests: XCTestCase {
+class StringWordTests: XCTestCase {
     func testCanMatchWord() {
         let string = "hello word!!"
         XCTAssertTrue(string.contains(word: "hello"))
@@ -63,6 +63,18 @@ class ContainsTests: XCTestCase {
         let empty = ""
         XCTAssertFalse(empty.contains(word: "hello"))
     }
+    
+    func testReplacingWord() {
+        let string = "my words: hello word!!"
+            .replacingWord(word: "word", with: "universe")
+        XCTAssertEqual(string, "my words: hello universe!!")
+    }
+    
+    func testCannotMatchSymbols() {
+        let string = "my words: hello word!!"
+            .replacingWord(word: ":", with: ",")
+        XCTAssertEqual(string, "my words: hello word!!")
+    }
 
     static var allTests = [
         ("testCanMatchWord", testCanMatchWord),
@@ -72,5 +84,7 @@ class ContainsTests: XCTestCase {
         ("testCannotMatchEmptyString2", testCannotMatchEmptyString2),
         ("testWordCanOccupyWholeString", testWordCanOccupyWholeString),
         ("testEmptyStringCannotContainWord", testEmptyStringCannotContainWord),
+        ("testReplacingWord", testReplacingWord),
+        ("testCannotMatchSymbols", testCannotMatchSymbols),
     ]
 }
