@@ -65,14 +65,14 @@ class StringWordTests: XCTestCase {
     }
     
     func testReplacingWord() {
-        let string = "my words: hello word!!"
-            .replacingWord(word: "word", with: "universe")
-        XCTAssertEqual(string, "my words: hello universe!!")
+        let string = "my words: hello word-l!!"
+            .replacing(word: "word", with: "universe")
+        XCTAssertEqual(string, "my words: hello universe-l!!")
     }
     
     func testCannotMatchSymbols() {
         let string = "my words: hello word!!"
-            .replacingWord(word: ":", with: ",")
+            .replacing(word: ":", with: ",")
         XCTAssertEqual(string, "my words: hello word!!")
     }
 

@@ -30,7 +30,7 @@ extension String {
         return self.range(of: "\\b\(word)\\b", options: .regularExpression)
     }
     
-    public func replacingWord(word: String, with newWord: String) -> String {
+    public func replacing(word: String, with newWord: String) -> String {
         guard let bounds = rangeOf(word: word) else { return self }
         var result = self
         result.replaceSubrange(bounds, with: Array(newWord))

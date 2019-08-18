@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                      = "Idioms"
-  s.version                   = "1.4.0"
+  s.version                   = "1.5.0"
   s.summary                   = "Swift idioms"
   s.description  = <<-DESC
     Set of extensions for common Swift types.
@@ -17,4 +17,8 @@ Pod::Spec.new do |s|
   s.source                    = { :git => "https://github.com/hectr/swift-idioms.git", :tag => s.version.to_s }
   s.source_files              = "Sources/Idioms/**/*"
   s.frameworks                = "Foundation"
+  s.test_spec 'Tests' do |test_spec|
+    test_spec.osx.deployment_target     = "10.9"
+    test_spec.source_files = 'Tests/IdiomsTests/**/*'
+  end
 end
