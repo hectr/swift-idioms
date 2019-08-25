@@ -31,6 +31,7 @@ extension String {
     }
     
     public func replacing(word: String, with newWord: String) -> String {
+        assert(word.rangeOf(word: word) != nil, "'\(word)' is not a valid word")
         guard let bounds = rangeOf(word: word) else { return self }
         var result = self
         result.replaceSubrange(bounds, with: Array(newWord))

@@ -69,11 +69,16 @@ class StringWordTests: XCTestCase {
             .replacing(word: "word", with: "universe")
         XCTAssertEqual(string, "my words: hello universe-l!!")
     }
+
+    func testReplacingWordNotFound() {
+        let string = "my words: hello word-l!!"
+            .replacing(word: "universe", with: "word")
+        XCTAssertEqual(string, "my words: hello word-l!!")
+    }
     
     func testCannotMatchSymbols() {
         let string = "my words: hello word!!"
-            .replacing(word: ":", with: ",")
-        XCTAssertEqual(string, "my words: hello word!!")
+        XCTAssertNil(string.rangeOf(word: ":"))
     }
 
     static var allTests = [
@@ -85,6 +90,7 @@ class StringWordTests: XCTestCase {
         ("testWordCanOccupyWholeString", testWordCanOccupyWholeString),
         ("testEmptyStringCannotContainWord", testEmptyStringCannotContainWord),
         ("testReplacingWord", testReplacingWord),
+        ("testReplacingWordNotFound", testReplacingWordNotFound),
         ("testCannotMatchSymbols", testCannotMatchSymbols),
     ]
 }
