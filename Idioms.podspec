@@ -18,9 +18,9 @@ Pod::Spec.new do |s|
   s.source_files              = "Sources/Idioms/**/*"
   s.frameworks                = "Foundation"
   s.test_spec 'Tests' do |test_spec|
-    test_spec.ios.deployment_target     = "8.0"
-    test_spec.osx.deployment_target     = "10.9"
-    test_spec.tvos.deployment_target     = "9.0"
+    test_spec.ios.deployment_target  = "8.0"
+    test_spec.osx.deployment_target  = "10.9"
+    test_spec.tvos.deployment_target = "9.0"
     test_spec.source_files = 'Tests/IdiomsTests/**/*'
   end
 end
