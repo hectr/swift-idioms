@@ -4,6 +4,12 @@ import PackageDescription
 
 let package = Package(
     name: "Idioms",
+    platforms: [
+        .iOS("8.0"),
+        .macOS("10.9"),
+        .watchOS("2.0"),
+        .tvOS("9.0")
+    ],
     products: [
         .library(
             name: "Idioms",
