@@ -6,6 +6,7 @@ extension ArrayRemovingTests {
     //   `swift test --generate-linuxmain`
     // to regenerate.
     static let __allTests__ArrayRemovingTests = [
+        ("testRemovingDuplicates", testRemovingDuplicates),
         ("testRemovingFirstFromEmptyArray", testRemovingFirstFromEmptyArray),
         ("testRemovingFirstFromManyElementsArray", testRemovingFirstFromManyElementsArray),
         ("testRemovingFirstFromOneElementArray", testRemovingFirstFromOneElementArray),
