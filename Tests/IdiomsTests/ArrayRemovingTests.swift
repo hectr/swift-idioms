@@ -47,6 +47,10 @@ final class ArrayRemovingTests: XCTestCase {
         XCTAssertEqual(["m", "a", "n", "y"].removingFirst(), ["a", "n", "y"])
     }
 
+    func testRemovingDuplicates() {
+        XCTAssertEqual(["a", "a", "b", "c", "b", "a"].removingDuplicates(), ["a", "b", "c"])
+    }
+
     static var allTests = [
         ("testRemovingLastFromEmptyArray", testRemovingLastFromEmptyArray),
         ("testRemovingLastFromOneElementArray", testRemovingLastFromOneElementArray),
@@ -54,6 +58,7 @@ final class ArrayRemovingTests: XCTestCase {
         ("testRemovingFirstFromEmptyArray", testRemovingFirstFromEmptyArray),
         ("testRemovingFirstFromOneElementArray", testRemovingFirstFromOneElementArray),
         ("testRemovingFirstFromManyElementsArray", testRemovingFirstFromManyElementsArray),
+        ("testRemovingDuplicates", testRemovingDuplicates),
     ]
 }
 

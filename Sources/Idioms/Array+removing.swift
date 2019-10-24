@@ -29,3 +29,13 @@ extension Array {
         return Array(dropLast())
     }
 }
+
+extension Array where Element: Hashable {
+    public func removingDuplicates() -> Array<Element> {
+        var result = [Element]()
+        for value in self where !result.contains(value) {
+            result.append(value)
+        }
+        return result
+    }
+}
