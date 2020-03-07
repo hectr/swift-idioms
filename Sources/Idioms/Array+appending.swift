@@ -21,7 +21,11 @@
 import Swift
 
 extension Array {
+    public func appending(_ newElements: [Element]) -> Array<Element> {
+        return self + newElements
+    }
+    
     public func appending(_ newElement: Element) -> Array<Element> {
-        return self + [newElement]
+        return appending([newElement])
     }
 }
