@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                      = "Idioms"
-  s.version                   = "1.8.0"
+  s.version                   = "1.9.0"
   s.summary                   = "Swift idioms"
   s.description  = <<-DESC
     Set of extensions for common Swift types.
