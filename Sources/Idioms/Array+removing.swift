@@ -30,7 +30,21 @@ extension Array {
     }
 }
 
-extension Array where Element: Hashable {
+extension Array where Element: Equatable {
+    public func removing(_ elements: [Element]) -> Array<Element> {
+        var result = self
+        for element in elements {
+            if let index = result.firstIndex(of: element) {
+                result.remove(at: index)
+            }
+        }
+        return result
+    }
+
+    public func removing(_ element: Element) -> Array<Element> {
+        return removing([element])
+    }
+
     public func removingDuplicates() -> Array<Element> {
         var result = [Element]()
         for value in self where !result.contains(value) {
