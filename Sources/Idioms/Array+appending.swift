@@ -21,11 +21,11 @@
 import Swift
 
 extension Array {
-    public func appending(_ newElements: [Element]) -> Array<Element> {
-        return self + newElements
+    public func appending(contentsOf array: [Element]) -> Array<Element> {
+        return self + array
     }
     
     public func appending(_ newElement: Element) -> Array<Element> {
-        return appending([newElement])
+        return appending(contentsOf: [newElement])
     }
 }
