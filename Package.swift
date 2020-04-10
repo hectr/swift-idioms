@@ -24,5 +24,6 @@ let package = Package(
         .testTarget(
             name: "IdiomsTests",
             dependencies: ["Idioms"]),
-    ]
+    ],
+    swiftLanguageVersions: [.v5]
 )
